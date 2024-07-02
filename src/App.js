@@ -96,7 +96,7 @@ class App extends Component {
     return headers
   }
 
-  componentWillMount() {
+  componentDidMount() {
     setTimeout(() => {
       let objs = generateRandomObjs(this.generateData(), 20)
       this.setState({objs: objs})
