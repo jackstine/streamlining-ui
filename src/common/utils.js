@@ -36,7 +36,12 @@ export const genWordNumber = function(size) {
  * Generates a random number, given size the number of digits
  * @param {*} size 
  */
-export const genNumber = function(size) {
+export const genNumber = function(size, min, max) {
+	if (min && max) {
+		// one for the offset
+		let diff = max - min + 1
+		return String(Math.floor(Math.random() * diff) + min);
+	}
 	return String(Math.floor(Math.random() * Math.pow(size, 10)));
 }
 
@@ -59,7 +64,7 @@ export const generateRandomObj = function (headers, id) {
 		let size = Math.floor(Math.random() * (h.maxSize - h.minSize + 1)) + h.minSize
 		size = size === 0 ? 1 : size
 		if (h.type === NUM) {
-			result = genNumber(size)
+			result = genNumber(size, h.minAmount, h.maxAmount)
 		} else if (h.type === WORDNUM) {
 			result = genWordNumber(size)
 		} else if (h.type === STRING) {
