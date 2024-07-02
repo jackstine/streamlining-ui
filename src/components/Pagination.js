@@ -33,7 +33,7 @@ class Pagination extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.changeCurrentPage(1)
   }
 

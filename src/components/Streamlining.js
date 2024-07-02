@@ -14,7 +14,7 @@ class Streamlining extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchData()
     //first off load the initial data, about 10 or whatever....
     // attach the window object that will read the size of the component and the size
