@@ -16,10 +16,7 @@ class Member extends Component {
             signUpPopup: null
         }
         this.navigateMembers = this.navigateMembers.bind(this);
-    }
-
-    componentWillMount() {
-        let pagination = this.props.pagination;
+        // let pagination = this.props.pagination;
         // if (!pagination) {
         this.props.setupPagination(this.props.search);
         // }

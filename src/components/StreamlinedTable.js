@@ -25,8 +25,7 @@ class StreamlinedTable extends React.Component {
     this.pagination = new PaginationCollection(defaultPageSize, props.maxSize, props.fetchData);
   }
 
-  componentWillMount() {
-      let pagination = this.props.pagination;
+  componentDidMount() {
       this.loadNumberOfPages(3)
       this.setupScroll()
   }

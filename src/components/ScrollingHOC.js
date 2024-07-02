@@ -1,5 +1,4 @@
 import React from 'react'
-import Table from './Table'
 import Promise from 'bluebird'
 import {PaginationCollection} from '../common/paginationCollection'
 
@@ -7,9 +6,9 @@ const ScrollingHOC = function (DataComponent) {
   return class extends React.Component {
     /**
      * 
-     * @param {headers}
-     * @param {fetchData}
-     * @param {id}
+     * @param {headers} The headers used in the passed component.
+     * @param {fetchData} a function used to fetch data that will be sent to the passed HOC's component.
+     * @param {id} the id given to the component
      */
     constructor(props) {
       super(props)
@@ -25,8 +24,7 @@ const ScrollingHOC = function (DataComponent) {
       this.pagination = new PaginationCollection(defaultPageSize, props.maxSize, props.fetchData);
     }
   
-    componentWillMount() {
-        let pagination = this.props.pagination;
+    componentDidMount() {
         this.loadNumberOfPages(3)
         this.setupScroll()
     }
@@ -83,7 +81,7 @@ const ScrollingHOC = function (DataComponent) {
     render() {
       return (
         <div>
-          <DataComponent data={this.state.data} headers={this.props.headers} id={this.props.id} />
+          <DataComponent data={this.state.data} {...this.props} />
         </div>
       )
     }
