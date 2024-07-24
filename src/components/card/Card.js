@@ -20,10 +20,8 @@ function Card(props) {
             </div>
           </div>
           <div className="card-info">
-            <label htmlFor={"phone_number_"+id}><div id={"phone_number_"+id}>Phone Number: {phone} </div></label>
-            <label htmlFor={"address_"+id}><div id={"address_"+id}>Address: {address} </div></label>
-            <label htmlFor={"state_"+id}><div id={"state_"+id}>state: {state} </div></label>
-            <label htmlFor={"age_"+id}><div id={"age_"+id}>age: {age} </div></label>
+            <label htmlFor={"age_"+id}><div id={"age_"+id}>Level: {age} </div></label>
+            <label htmlFor={"phone_number_"+id}><div id={"phone_number_"+id}>Phone Number for seller: {phone} </div></label>
           </div>
         </div>
       </div>
