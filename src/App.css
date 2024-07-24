@@ -14,6 +14,17 @@
   color: white;
 }
 
+.button-link {
+  color: #222;
+  cursor: pointer;
+  font-size: 2.5rem;
+  display: inline-block;
+  margin: 20px 15px 0 15px;
+  border-radius: 15px;
+  background-color: white;
+  padding: 2px 15px 2px 15px;
+}
+
 .App-title {
   font-size: 1.5em;
 }

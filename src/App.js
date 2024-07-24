@@ -1,13 +1,20 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component, useState } from 'react';
 import './App.css';
 // import StreamlinedTable from './components/StreamlinedTable'
 import {generateRandomObjs, NUM, formatDollars, WORDNUM} from './common/utils'
 import {StreamlinedTable} from './components/Table'
+import StreamlinedCardDisplay from './components/StreamlinedCardDisplay';
+import CardDisplay from './components/card/CardDisplay';
+
+// these are the viewing options for the component, if the user wants to view the Table or the Cards
+const VIEWING_OPTIONS = ["TABLE", "CARDS"]
 
 class App extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      viewing: VIEWING_OPTIONS[0],
+    }
   }
 
   generateData() {
@@ -31,7 +38,7 @@ class App extends Component {
       }
     }, {
       field: "address",
-      maxSize: 40,
+      maxSize: 30,
       minSize: 12
     }, {
       field: "state",
@@ -94,21 +101,33 @@ class App extends Component {
   render() {
     // SHOW how to make the table into a sortable table with the headers
     // SHOW how to add in component elements to change the size of the cell in the table
+    const fetch = (num) => {
+        return new Promise((resolver, rejector) => {
+          resolver(generateRandomObjs(this.generateData(), num))
+        })
+      }
+    let viewingComponent =  <StreamlinedTable
+      fetchData={fetch}
+      headers={this.headers()}
+      id="id" />
+    if (this.state.viewing == VIEWING_OPTIONS[1]) {
+      // then display the cards
+      viewingComponent = <StreamlinedCardDisplay
+        fetchData={fetch}
+        id="card_display"
+        />
+    }
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Using Higher Order Components</h1>
+          <div>
+            <div className="button-link" onClick={() => this.setState({viewing: VIEWING_OPTIONS[0]})}>Table</div>
+            <div className="button-link" onClick={() => this.setState({viewing: VIEWING_OPTIONS[1]})}>Pokemon Buying Board</div>
+          </div>
         </header>
         <div className="container">
-          <StreamlinedTable
-            fetchData={(num) => {
-              return new Promise((resolver, rejector) => {
-                resolver(generateRandomObjs(this.generateData(), num))
-              })
-            }}
-            headers={this.headers()}
-            id="id" />
+          {viewingComponent}
         </div>
         <div className="bottom-page"/>
       </div>

@@ -1,0 +1,55 @@
+.cards-display-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.card-border {
+  border: 1px black solid;
+  padding: 2px;
+  margin: 20px;
+}
+
+.card-container {
+  border: 1px black solid;
+  background-color: beige;
+  width: fit-content; 
+  height: 250px;
+  display: flex;
+  padding: 20px;
+}
+
+.card-salary {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5em;
+}
+
+.card-header {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.card-image {
+  width: 80px; 
+  height: 80px;
+  display: flex;
+  align-self: flex-start;
+}
+
+.card-name {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  align-items: start;
+}
+
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
